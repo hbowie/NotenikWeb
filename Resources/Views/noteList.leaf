@@ -1,0 +1,22 @@
+#extend("index"):
+	#export("body"):
+		<section id="blog" class="wrapper">
+			<h2>Notes List</h2>
+
+			#for(note in notes):
+			<article>
+				<a href="/#(note.slug)">
+					<img src="#(note.image)">
+					<h3>#(note.title)</h3>
+					<p>#(note.teaser)</p>
+					#if(note.tags != nil):
+						<p class="category">#(post.tags)</p>
+					#else:
+						<p class="category">Uncategorized</p>
+					#endif
+				</a>
+			</article>
+			#endfor
+		</section>
+	#endexport
+#endextend
