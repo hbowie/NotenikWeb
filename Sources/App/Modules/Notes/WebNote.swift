@@ -9,10 +9,10 @@ struct WebNote: Encodable {
 	let title:  String
 	let slug:   String
 	let tags:   String?
-	// let link:   String
+	let link:   String?
 	let image:  String?
 	let teaser: String?
 	let date:   String?
-	// let code:   String?
+	let code:   String?
 	let body:   String
 }
