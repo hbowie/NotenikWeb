@@ -1,3 +1,10 @@
+// NotenikWeb
+// configure.swift
+//
+//  Copyright © 2020 Herb Bowie (https://powersurgepub.com)
+//
+//  This programming code is published as open source software under the
+//  terms of the MIT License (https://opensource.org/licenses/MIT).
 import Fluent
 import FluentSQLiteDriver
 import Leaf
@@ -12,14 +19,18 @@ public func configure(_ app: Application) throws {
     app.leaf.cache.isEnabled = app.environment.isRelease
     
     app.databases.use(.sqlite(.file("db.sqlite")), as: .sqlite)
-
-    // app.migrations.add(CreateTodo())
-
-    let routers: [RouteCollection] = [
-    	FrontendRouter(),
-    	NoteListRouter(),
+    
+    app.sessions.use(.fluent)
+    app.migrations.add(SessionRecord.migration)
+    app.middleware.use(app.sessions.middleware)
+    
+    let modules: [Module] = [
+        FrontendModule(),
+        NoteModule(),
+        UserModule(),
     ]
-    for router in routers {
-    	try router.boot(routes: app.routes)
+    
+    for module in modules {
+        try module.configure(app)
     }
 }

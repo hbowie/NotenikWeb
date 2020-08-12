@@ -77,6 +77,25 @@ header h1 {
 	color: #000;
 }
 
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    display: block;
+    padding: 8px;
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+
+input.field {
+    background: #fff;
+    color: #000;
+}
+
+
+
 @media (prefers-color-scheme: dark) {
 	body {
 		background: #222;

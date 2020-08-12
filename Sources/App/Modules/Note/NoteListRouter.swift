@@ -5,7 +5,7 @@
 
 import Vapor
 
-struct NoteListRouter: RouteCollection {
+struct NoteRouter: RouteCollection {
 
 	let controller = NoteListController()
 	
